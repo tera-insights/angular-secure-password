@@ -1,0 +1,30 @@
+{
+  "name": "angular-secure-password",
+  "homepage": "https://github.com/tera-insights/angular-secure-password",
+  "authors": [
+    "Joshua Longerbeam <josh.terainsights@outlook.com>"
+  ],
+  "description": "",
+  "main": [
+    "./dist/angular-secure-password.min.js", 
+    "./dist/angular-secure-password.min.css"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "angularjs",
+    "secure",
+    "password",
+    "input"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
