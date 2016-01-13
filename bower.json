@@ -4,11 +4,15 @@
   "authors": [
     "Joshua Longerbeam <josh.terainsights@outlook.com>"
   ],
-  "description": "",
+  "description": "Password text input that emulates HTML DOM element without relying on js garbage collector",
   "main": [
-    "./dist/angular-secure-password.js",
-    "./dist/angular-secure-password.css"
+    "src/angular-secure-password.js",
+    "src/angular-secure-password.css"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tera-insights/angular-secure-password.git"
+  },
   "moduleType": [
     "globals"
   ],
