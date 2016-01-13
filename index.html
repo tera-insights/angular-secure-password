@@ -7,35 +7,35 @@
   <script type="text/javascript">
     angular.module('angular-secure-password').controller('ctrl', [
       '$scope', function($scope){
+        
         $scope.buffer = new Uint8Array(20);
+        $scope.otherbuffer = new Uint8Array(5);
+        
         $scope.decoder = new TextDecoder('utf-8');
+        
+        // Simple, relatively secure scrubbing
+        $scope.clear = function(){
+          $scope.buffer.fill(0);
+          $scope.otherbuffer.fill(0);
+        };
+        
       }]);
   </script>
-  <meta charset=utf-8 />
 </head>
 
 <body ng-app="angular-secure-password" ng-controller="ctrl" style="margin-left:10px;">
   <h2>Secure password input</h2>
-<!--   <div style="margin-bottom: 10px;">
-    <span style="margin-left:10px; font-size: 16px; font-weight: bold;">CSS'ed:&nbsp;</span>
-    <span class="secureInput" ng-keypress="append($event)" ng-keydown="limitedAlter($event)" tabindex="-1">
-      <span ng-repeat="char in notPassword">
-        <span ng-if="$first" style="word-spacing: -10px;">&nbsp;</span>
-        <span class="password-symbol">&bull;&nbsp;</span>
-      </span>
-      <span class="blinking-cursor">|&nbsp;</span>
-      <span class="placeholder" ng-if="notPassword.length===0">Password</span>
-    </span>
-  </div> -->
+  <span style="display: inline;">
+    Decoded password: {{decoder.decode(buffer.slice(0,cursor))}}
+  </span>
   <secure-password typedarray="buffer"></secure-password>
   <span>
-    <button ng-click="clearAll()" style="margin-left: 10px;">
-      Clear
-    </button>
-    <span>
-      Decoded password: {{decoder.decode(buffer.slice(0,cursor))}}
-    </span>
+    Decoded password: {{decoder.decode(otherbuffer.slice(0,cursor))}}
   </span>
+  <secure-password typedarray="otherbuffer"></secure-password>
+  <div><button ng-click="clear()" style="margin-left: 10px;">
+      Clear All
+  </button></div>
   <hr>
   <div style="margin-left: 10px;">
     <h3>What's more secure about this?</h3>
