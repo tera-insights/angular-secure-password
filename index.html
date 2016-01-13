@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="src/angular-secure-password.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="src/angular-secure-password.js"></script>
+  <script type="text/javascript">
+    angular.module('angular-secure-password').controller('ctrl', [
+      '$scope', function($scope){
+        $scope.notbuff;
+      }]);
+  </script>
+  <meta charset=utf-8 />
+</head>
+
+<body ng-app="angular-secure-password" ng-controller="ctrl" style="margin-left:10px;">
+  <h2>Secure password input</h2>
+<!--   <div style="margin-bottom: 10px;">
+    <span style="margin-left:10px; font-size: 16px; font-weight: bold;">CSS'ed:&nbsp;</span>
+    <span class="secureInput" ng-keypress="append($event)" ng-keydown="limitedAlter($event)" tabindex="-1">
+      <span ng-repeat="char in notPassword">
+        <span ng-if="$first" style="word-spacing: -10px;">&nbsp;</span>
+        <span class="password-symbol">&bull;&nbsp;</span>
+      </span>
+      <span class="blinking-cursor">|&nbsp;</span>
+      <span class="placeholder" ng-if="notPassword.length===0">Password</span>
+    </span>
+  </div> -->
+  <secure-password arraybuffer="notbuff"></secure-password>
+  <span>
+    <button ng-click="clearAll()" style="margin-left: 10px;">
+      Clear
+    </button>
+    <span>
+      Decoded password: {{decoder.decode(notbuff.slice(0,cursor))}}
+    </span>
+  </span>
+  <hr>
+  <div style="margin-left: 10px;">
+    <h3>What's more secure about this?</h3>
+    <p style="width: 500px;">Using ng-model stores the password string in memory. Clearing the ngModel via myPasswordString=" "; leaves the original entry in raw memory until the garbage collector kicks in (which cannot be invoked manually). So I used a combination of keyboardEvents to edit a Uint8Array and ng-repeats to simulate a full-sized password input field. Using Uint8Arrays allows direct memory access that can be more securely cleared.</p>
+  </div>
+</body>
+
+</html>
