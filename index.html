@@ -7,7 +7,8 @@
   <script type="text/javascript">
     angular.module('angular-secure-password').controller('ctrl', [
       '$scope', function($scope){
-        $scope.notbuff;
+        $scope.buffer = new Uint8Array(20);
+        $scope.decoder = new TextDecoder('utf-8');
       }]);
   </script>
   <meta charset=utf-8 />
@@ -26,13 +27,13 @@
       <span class="placeholder" ng-if="notPassword.length===0">Password</span>
     </span>
   </div> -->
-  <secure-password arraybuffer="notbuff"></secure-password>
+  <secure-password typedarray="buffer"></secure-password>
   <span>
     <button ng-click="clearAll()" style="margin-left: 10px;">
       Clear
     </button>
     <span>
-      Decoded password: {{decoder.decode(notbuff.slice(0,cursor))}}
+      Decoded password: {{decoder.decode(buffer.slice(0,cursor))}}
     </span>
   </span>
   <hr>
