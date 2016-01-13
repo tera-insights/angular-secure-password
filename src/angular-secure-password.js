@@ -9,7 +9,7 @@ angular.module('angular-secure-password', []).directive('securePassword',
       template: '<div style="margin-bottom: 10px;">'+
                   '<span class="secure-input" ng-keypress="append($event)" ng-keydown="alter($event)" tabindex="0">'+
                     '<span ng-repeat="char in notPassword">'+
-                      '<span ng-if="$first" style="word-spacing: -10px;">&nbsp;</span>'+
+                      '<span ng-if="$first" class="first-symbol">&nbsp;</span>'+
                       '<span class="password-symbol">&bull;&nbsp;</span>'+
                     '</span>'+
                     '<span class="blinking-cursor">|&nbsp;</span>'+
@@ -35,8 +35,9 @@ angular.module('angular-secure-password', []).directive('securePassword',
             if (keyEvent.keyCode === 8 && cursor > 0) { // || keyEvent.keyIdentifier === 'U+0008')
               scope.buffer[--cursor] = 0;
               scope.notPassword.splice(-1, 1);
-              stopEvent(keyEvent); // to prevent backspace from navigating backwards in browser history
             }
+            if (keyEvent.keyCode === 8 && cursor >= 0)
+              stopEvent(keyEvent); // to prevent backspace from navigating backwards in browser history
           };
           
           //// NOTE: Functionality of extended ASCII has not been tested whatsoever
