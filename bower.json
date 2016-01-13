@@ -6,8 +6,8 @@
   ],
   "description": "",
   "main": [
-    "./dist/angular-secure-password.min.js",
-    "./dist/angular-secure-password.min.css"
+    "./dist/angular-secure-password.js",
+    "./dist/angular-secure-password.css"
   ],
   "moduleType": [
     "globals"
