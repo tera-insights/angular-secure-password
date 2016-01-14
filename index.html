@@ -8,8 +8,8 @@
     angular.module('angular-secure-password').controller('ctrl', [
       '$scope', function($scope){
         
-        $scope.buffer = new Uint8Array(20);
-        $scope.otherbuffer = new Uint8Array(5);
+        $scope.buffer = new Uint8Array(50);
+        $scope.otherbuffer = new Uint8Array(10);
         
         $scope.decoder = new TextDecoder('utf-8');
         
@@ -19,6 +19,10 @@
           $scope.otherbuffer.fill(0);
         };
         
+        $scope.afunction = function(){
+          alert('afunction was called');
+        };
+        
       }]);
   </script>
 </head>
@@ -26,13 +30,13 @@
 <body ng-app="angular-secure-password" ng-controller="ctrl" style="margin-left:10px;">
   <h2>Secure password input</h2>
   <span style="display: inline;">
-    Decoded password: {{decoder.decode(buffer.slice(0,cursor))}}
+    Decoded password: {{decoder.decode(buffer)}}
   </span>
-  <secure-password typedarray="buffer"></secure-password>
+  <secure-password array="buffer" idlesec="30" enter="afunction()" autofocus></secure-password>
   <span>
-    Decoded password: {{decoder.decode(otherbuffer.slice(0,cursor))}}
+    Decoded password: {{decoder.decode(otherbuffer)}}
   </span>
-  <secure-password typedarray="otherbuffer"></secure-password>
+  <secure-password array="otherbuffer" placeholder="Other password" idlesec="5" filler="deg"></secure-password>
   <div><button ng-click="clear()" style="margin-left: 10px;">
       Clear All
   </button></div>
