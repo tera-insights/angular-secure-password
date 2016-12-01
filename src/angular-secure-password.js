@@ -9,6 +9,7 @@
 //        idlemsec="number"
 //        idlesec="number"
 //        enter="functionInParentScope()"
+//        change="functionInParentScope()" 
 //        extended
 //        autofocus >
 //    </secure-password>
@@ -21,7 +22,7 @@ angular.module('angular-secure-password', []).directive('securePassword', ['$tim
       restrict: 'E',
       replace: false,
       transclude: false,
-      scope: {buffer: '=array', enter: '&'},
+      scope: {buffer: '=array', enter: '&', change: "&"},
 
       template: '<div style="margin-bottom: 10px;">'+
                   '<span class="secure-input" ng-keypress="append($event)" ng-keydown="alter($event)" tabindex="0">'+
@@ -87,6 +88,8 @@ angular.module('angular-secure-password', []).directive('securePassword', ['$tim
               stopEvent();
             } else
               resetTimeout(); //even though user didn't enter valid key, user did interact with input
+            if ( typeof scope.change === 'function')
+              scope.change(); // signal the change to the callee
           };
           
           //// NOTE: Functionality of extended ASCII has not been tested **at all**
