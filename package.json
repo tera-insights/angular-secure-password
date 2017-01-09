@@ -1,0 +1,28 @@
+{
+  "name": "angular-secure-password",
+  "version": "1.0.0",
+  "description": "Securely input passwords for angular",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-uglify": "^2.0.0",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tera-insights/angular-secure-password.git"
+  },
+  "keywords": [
+    "security",
+    "input"
+  ],
+  "author": "Alin Dobra, Tera Insights, LLC",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tera-insights/angular-secure-password/issues"
+  },
+  "homepage": "https://github.com/tera-insights/angular-secure-password#readme"
+}
