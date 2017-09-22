@@ -4,8 +4,9 @@
   "description": "Securely input passwords for angular",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp-uglify": "^2.0.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-serve": "^1.4.0",
+    "gulp-uglify": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
