@@ -55,7 +55,6 @@ angular.module('angular-secure-password', []).directive('securePassword', ['$tim
                     // scope.tabindex = parseInt(attrs.tabindex) || 0;  // // doesn't actually affect anything yet
 
                     function clear() {
-                        console.log('cleared!');
                         cursor = 0;
                         if (size !== 0)
                             scope.buffer.fill(0);
@@ -80,7 +79,6 @@ angular.module('angular-secure-password', []).directive('securePassword', ['$tim
                         for (var i = 0; i < data.length; i++) {
                             scope.appendChar(data.charCodeAt(i));
                         }
-                        console.log("Paste: ", data);
                         scope.$apply();
                     }
 
@@ -105,7 +103,6 @@ angular.module('angular-secure-password', []).directive('securePassword', ['$tim
                     };
 
                     scope.appendChar = function(cC) {
-                        console.log(cC);
                         var cond1 = cC >= 32 && cC <= 126, //excludes 'DEL' char at 127
                             cond2 = cC >= 32 && cC <= 255 && (cC !== 129 && cC !== 141 && cC !== 143 && cC !== 144 && cC !== 157);
                         if (cursor >= 0 && cursor < size) {
